@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getMovies, GetMoviesParams } from "../api/movies";
+import { getMovies } from "../api/movies";
+import type { GetMoviesParams } from "../api/movies";
 import type { Movie } from "../types/movie";
 import { MovieCard } from "../components/movies/MovieCard";
 import { MovieFilters, MovieFilters as MovieFiltersType } from "../components/movies/MovieFilters";
