@@ -1,6 +1,6 @@
 import { apiClient } from "./client";
-import { PaginatedResponse } from "../types/api";
-import { Movie } from "../types/movie";
+import type { PaginatedResponse } from "../types/api";
+import type { Movie } from "../types/movie";
 
 export interface GetMoviesParams {
   genreId?: number;

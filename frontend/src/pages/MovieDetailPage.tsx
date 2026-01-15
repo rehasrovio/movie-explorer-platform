@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getMovieById } from "../api/movies";
-import { Movie } from "../types/movie";
+import type { Movie } from "../types/movie";
 import { Loading } from "../components/common/Loading";
 import { ErrorState } from "../components/common/ErrorState";
 import { NotFoundPage } from "./NotFoundPage";

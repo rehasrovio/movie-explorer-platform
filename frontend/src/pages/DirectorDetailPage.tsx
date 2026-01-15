@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getDirectorById } from "../api/directors";
-import { Director } from "../types/director";
+import type { Director } from "../types/director";
 import { Loading } from "../components/common/Loading";
 import { ErrorState } from "../components/common/ErrorState";
 import { NotFoundPage } from "./NotFoundPage";

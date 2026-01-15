@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovieById } from "../api/movies";
-import { Movie } from "../types/movie";
+import type { Movie } from "../types/movie";
 import { MovieCard } from "../components/movies/MovieCard";
 import { Loading } from "../components/common/Loading";
 import { ErrorState } from "../components/common/ErrorState";

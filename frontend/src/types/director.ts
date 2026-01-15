@@ -1,4 +1,4 @@
-import { MovieReference } from "./common";
+import type { MovieReference } from "./common";
 
 export interface Director {
   id: number;

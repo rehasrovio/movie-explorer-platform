@@ -1,6 +1,6 @@
 import { apiClient } from "./client";
-import { PaginatedResponse } from "../types/api";
-import { Director } from "../types/director";
+import type { PaginatedResponse } from "../types/api";
+import type { Director } from "../types/director";
 
 export const getDirectors = async (): Promise<PaginatedResponse<Director>> => {
   const response = await apiClient.get<PaginatedResponse<Director>>("/directors");

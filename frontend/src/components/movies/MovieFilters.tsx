@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Genre } from "../../types/genre";
-import { Director } from "../../types/director";
-import { Actor } from "../../types/actor";
+import type { Genre } from "../../types/genre";
+import type { Director } from "../../types/director";
+import type { Actor } from "../../types/actor";
 import { getGenres } from "../../api/genres";
 import { getDirectors } from "../../api/directors";
 import { getActors } from "../../api/actors";

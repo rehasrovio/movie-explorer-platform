@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getActorById } from "../api/actors";
-import { Actor } from "../types/actor";
+import type { Actor } from "../types/actor";
 import { Loading } from "../components/common/Loading";
 import { ErrorState } from "../components/common/ErrorState";
 import { NotFoundPage } from "./NotFoundPage";

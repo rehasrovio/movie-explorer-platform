@@ -1,6 +1,6 @@
-import { Director } from "./director";
-import { Genre } from "./genre";
-import { Actor } from "./actor";
+import type { Director } from "./director";
+import type { Genre } from "./genre";
+import type { Actor } from "./actor";
 
 export interface Movie {
   id: number;
