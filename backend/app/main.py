@@ -6,6 +6,12 @@ from app.db.base import Base
 from app.db.init_db import seed_data
 from app.db.session import engine
 
+# Import all models so SQLAlchemy can discover them
+from app.models.actor import Actor  # noqa: F401
+from app.models.director import Director  # noqa: F401
+from app.models.genre import Genre  # noqa: F401
+from app.models.movie import Movie  # noqa: F401
+
 app = FastAPI(title="Movie Explorer API")
 
 # CORS middleware
