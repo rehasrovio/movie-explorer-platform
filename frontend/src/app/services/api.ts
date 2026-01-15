@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Movie, Actor, Director, Genre, MovieFilters } from '@/app/types';
 
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
 
 const client = axios.create({
   baseURL: API_BASE_URL,
