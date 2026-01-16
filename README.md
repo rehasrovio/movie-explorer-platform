@@ -18,14 +18,21 @@ A full-stack web application for exploring movies, actors, directors, and genres
 
 ## 📋 Prerequisites
 
-- **Docker & Docker Compose** (recommended for full-stack setup)
-- OR
+### For Docker (Recommended - No other dependencies needed!)
+
+- **Docker Desktop** (includes Docker Compose) OR
+- **Docker Engine** + **Docker Compose plugin**
+
+That's it! Docker handles everything else (Python, Node.js, databases, etc. are all inside containers).
+
+### For Local Development (Without Docker)
+
 - **Python 3.11+** (for backend)
 - **Node.js 20+** (for frontend)
 
 ## 🚀 Quick Start with Docker (Recommended)
 
-The easiest way to run the entire application:
+**No need to install Python, Node.js, or any other dependencies!** Docker handles everything.
 
 ### 1. Build and Start All Services
 
@@ -33,9 +40,13 @@ The easiest way to run the entire application:
 docker compose up --build
 ```
 
-This will:
-- Build and start the backend API on `http://localhost:8000`
-- Build and start the frontend on `http://localhost:5173`
+This single command will:
+- Download all required base images (Python, Node.js, etc.)
+- Install all dependencies (Python packages, npm packages)
+- Run linting and tests
+- Build both backend and frontend
+- Start the backend API on `http://localhost:8000`
+- Start the frontend on `http://localhost:5173`
 - Automatically configure the frontend to connect to the backend
 
 ### 2. Access the Application
