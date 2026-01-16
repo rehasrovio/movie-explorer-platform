@@ -1,3 +1,5 @@
+"""API routes for actor-related endpoints."""
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
@@ -16,6 +18,22 @@ def get_actors_list(
     genreId: int | None = Query(None, alias="genreId"),
     db: Session = Depends(get_db),
 ):
+    """
+    Get a paginated list of actors with optional filtering.
+
+    Supports filtering by movie or genre. Returns actors who have acted in
+    the specified movie or in movies of the specified genre.
+
+    Query Parameters:
+        movieId: Filter by movie ID - returns actors in this movie (must be positive integer)
+        genreId: Filter by genre ID - returns actors in movies of this genre (must be positive integer)
+
+    Returns:
+        PaginatedResponse with list of actors and total count
+
+    Raises:
+        HTTPException 400: If any filter ID is invalid (<= 0)
+    """
     if movieId is not None and movieId <= 0:
         raise HTTPException(status_code=400, detail="Invalid movieId")
     if genreId is not None and genreId <= 0:
@@ -27,6 +45,19 @@ def get_actors_list(
 
 @router.get("/{actor_id}", response_model=ActorDetail)
 def get_actor(actor_id: int, db: Session = Depends(get_db)):
+    """
+    Get detailed information about a specific actor.
+
+    Path Parameters:
+        actor_id: The ID of the actor to retrieve (must be positive integer)
+
+    Returns:
+        ActorDetail with full actor information including filmography
+
+    Raises:
+        HTTPException 400: If actor_id is invalid (<= 0)
+        HTTPException 404: If actor is not found
+    """
     if actor_id <= 0:
         raise HTTPException(status_code=400, detail="Invalid actor ID")
 

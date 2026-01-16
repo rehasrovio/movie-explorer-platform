@@ -64,6 +64,8 @@ Once the server is running, access the interactive API documentation:
 
 ## Testing
 
+**Important**: Tests are automatically run during Docker build. The build will fail if any test fails.
+
 ### Run All Tests
 
 ```bash
@@ -104,6 +106,8 @@ pytest -n auto
 
 ## Linting
 
+**Important**: Linting is automatically run during Docker build. The build will fail if any linting error is found.
+
 ### Check Code with Ruff
 
 ```bash
@@ -141,6 +145,13 @@ docker compose up --build backend
 ```
 
 This will build and start the backend container with proper networking configured.
+
+**Build Process**: The Docker build automatically runs:
+1. Linting (`ruff check .`) - build fails if linting errors found
+2. Tests (`pytest`) - build fails if tests fail
+3. Starts the server
+
+Ensure all linting and tests pass before building.
 
 ### Standalone Docker
 

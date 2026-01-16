@@ -80,7 +80,7 @@ export function FilterBar({ filters, onFiltersChange, resultsCount }: FilterBarP
               className="w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
             >
               <option value="all">All Genres</option>
-              {genres.map((genre) => (
+              {genres?.map((genre) => (
                 <option key={genre.id} value={genre.id}>
                   {genre.name}
                 </option>
@@ -101,7 +101,7 @@ export function FilterBar({ filters, onFiltersChange, resultsCount }: FilterBarP
               className="w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
             >
               <option value="all">All Directors</option>
-              {directors.map((director) => (
+              {directors?.map((director) => (
                 <option key={director.id} value={director.id}>
                   {director.name}
                 </option>
@@ -122,7 +122,7 @@ export function FilterBar({ filters, onFiltersChange, resultsCount }: FilterBarP
               className="w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
             >
               <option value="all">All Actors</option>
-              {actors.map((actor) => (
+              {actors?.map((actor) => (
                 <option key={actor.id} value={actor.id}>
                   {actor.name}
                 </option>
@@ -143,7 +143,7 @@ export function FilterBar({ filters, onFiltersChange, resultsCount }: FilterBarP
               className="w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
             >
               <option value="all">All Years</option>
-              {years.map((year) => (
+              {years?.map((year) => (
                 <option key={year} value={year}>
                   {year}
                 </option>

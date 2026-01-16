@@ -156,11 +156,16 @@ pytest
 pytest -v  # Verbose output
 ```
 
+**Note**: Tests are automatically run during Docker build. Build will fail if tests fail.
+
 ### Frontend Tests
 ```bash
 cd frontend
 npm test
+npm test -- --run  # Run once (non-watch mode)
 ```
+
+**Note**: Tests are automatically run during Docker build. Build will fail if tests fail.
 
 ## 🔍 Linting
 
@@ -171,11 +176,15 @@ ruff check .
 ruff check . --fix  # Auto-fix issues
 ```
 
+**Note**: Linting is automatically run during Docker build. Build will fail if linting fails.
+
 ### Frontend Linting
 ```bash
 cd frontend
 npm run lint
 ```
+
+**Note**: Linting is automatically run during Docker build. Build will fail if linting fails.
 
 ## 🐳 Docker Commands
 
@@ -183,6 +192,12 @@ npm run lint
 ```bash
 docker compose up --build
 ```
+
+**Build Process**: The Docker build automatically runs:
+- **Backend**: Linting (`ruff check`) and tests (`pytest`) before starting
+- **Frontend**: Linting (`npm run lint`) and tests (`npm test`) before building
+
+If any linting or test fails, the build will fail.
 
 ### Start in Background (Detached)
 ```bash

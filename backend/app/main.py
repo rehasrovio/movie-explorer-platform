@@ -29,6 +29,12 @@ app.include_router(api_router, prefix="/api/v1")
 
 @app.on_event("startup")
 def on_startup():
+    """
+    Initialize database on application startup.
+
+    Creates all database tables if they don't exist and seeds initial data.
+    This runs automatically when the FastAPI application starts.
+    """
     # Create tables
     Base.metadata.create_all(bind=engine)
 

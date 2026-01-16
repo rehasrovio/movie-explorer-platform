@@ -156,6 +156,8 @@ When running in Docker, the API URL is set to `http://localhost:8000/api/v1` dur
 
 ## 🧪 Testing
 
+**Important**: Tests are automatically run during Docker build. The build will fail if any test fails.
+
 ### Run Tests
 
 ```bash
@@ -168,6 +170,12 @@ npm test
 npm test -- --watch
 ```
 
+### Run Tests Once (Non-Watch Mode)
+
+```bash
+npm test -- --run
+```
+
 ### Run Tests with Coverage
 
 ```bash
@@ -175,6 +183,14 @@ npm test -- --coverage
 ```
 
 ## 🐳 Docker
+
+**Build Process**: The Docker build automatically runs:
+1. Linting (`npm run lint`) - build fails if linting errors found
+2. Tests (`npm test -- --run`) - build fails if tests fail
+3. Production build (`npm run build`)
+4. Starts preview server
+
+Ensure all linting and tests pass before building.
 
 ### Build Docker Image
 
@@ -216,6 +232,12 @@ Vite configuration is in `vite.config.ts`. It includes:
 - React plugin
 - Tailwind CSS plugin
 - Path alias resolution
+
+### ESLint
+
+ESLint is configured in `eslint.config.js`. Linting is automatically run:
+- During Docker build (build fails on errors)
+- Manually with `npm run lint`
 
 ## 🎨 Styling
 

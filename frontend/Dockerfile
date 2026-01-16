@@ -9,6 +9,14 @@ ARG VITE_API_BASE_URL=http://localhost:8000/api/v1
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 COPY . .
+
+# Run linting
+RUN npm run lint || exit 1
+
+# Run tests
+RUN npm test -- --run || exit 1
+
+# Build for production
 RUN npm run build
 
 FROM node:20-alpine

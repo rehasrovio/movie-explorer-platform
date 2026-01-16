@@ -1,3 +1,5 @@
+"""API routes for movie-related endpoints."""
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
@@ -18,6 +20,25 @@ def get_movies_list(
     q: str | None = Query(None),
     db: Session = Depends(get_db),
 ):
+    """
+    Get a paginated list of movies with optional filtering.
+
+    Supports filtering by genre, director, actor, release year, and text search.
+    All filters can be combined. Returns empty list if no movies match.
+
+    Query Parameters:
+        genreId: Filter by genre ID (must be positive integer)
+        directorId: Filter by director ID (must be positive integer)
+        actorId: Filter by actor ID (must be positive integer)
+        releaseYear: Filter by exact release year (must be positive integer)
+        q: Search query for movie title (case-insensitive partial match)
+
+    Returns:
+        PaginatedResponse with list of movies and total count
+
+    Raises:
+        HTTPException 400: If any filter ID is invalid (<= 0)
+    """
     # Validate IDs
     if genreId is not None and genreId <= 0:
         raise HTTPException(status_code=400, detail="Invalid genreId")
@@ -41,6 +62,19 @@ def get_movies_list(
 
 @router.get("/{movie_id}", response_model=MovieDetail)
 def get_movie(movie_id: int, db: Session = Depends(get_db)):
+    """
+    Get detailed information about a specific movie.
+
+    Path Parameters:
+        movie_id: The ID of the movie to retrieve (must be positive integer)
+
+    Returns:
+        MovieDetail with full movie information including director, genres, and actors
+
+    Raises:
+        HTTPException 400: If movie_id is invalid (<= 0)
+        HTTPException 404: If movie is not found
+    """
     if movie_id <= 0:
         raise HTTPException(status_code=400, detail="Invalid movie ID")
 
