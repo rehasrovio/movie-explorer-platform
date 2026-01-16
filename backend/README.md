@@ -131,49 +131,62 @@ ruff format .
 
 ## Docker
 
-### Build Docker Image
+### Using Docker Compose (Recommended)
+
+The easiest way to run the backend is using Docker Compose from the root directory:
+
+```bash
+# From repository root
+docker compose up --build backend
+```
+
+This will build and start the backend container with proper networking configured.
+
+### Standalone Docker
+
+#### Build Docker Image
 
 ```bash
 docker build -t movie-explorer-backend .
 ```
 
-### Run Docker Container
+#### Run Docker Container
 
 ```bash
 docker run -p 8000:8000 movie-explorer-backend
 ```
 
-### Run Docker Container with Environment Variables
+#### Run Docker Container with Environment Variables
 
 ```bash
 docker run -p 8000:8000 -e DATABASE_URL=sqlite:///./movie.db movie-explorer-backend
 ```
 
-### Build and Run in One Command
+#### Build and Run in One Command
 
 ```bash
 docker build -t movie-explorer-backend . && docker run -p 8000:8000 movie-explorer-backend
 ```
 
-### Run Docker Container in Detached Mode
+#### Run Docker Container in Detached Mode
 
 ```bash
 docker run -d -p 8000:8000 --name movie-backend movie-explorer-backend
 ```
 
-### View Docker Logs
+#### View Docker Logs
 
 ```bash
 docker logs movie-backend
 ```
 
-### Stop Docker Container
+#### Stop Docker Container
 
 ```bash
 docker stop movie-backend
 ```
 
-### Remove Docker Container
+#### Remove Docker Container
 
 ```bash
 docker rm movie-backend
